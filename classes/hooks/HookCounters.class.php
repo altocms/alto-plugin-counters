@@ -65,7 +65,7 @@ class PluginCounters_HookCounters extends Hook {
                     }
                 }
                 if ($this->aConfig['show_topic.check_session']) {
-                    if (E::ModuleSession()->Get('show_topic_' . $oTopic->getId())) {
+                    if (E::ModuleSession()->Get('show_topic_' . $oTopic->getId()) || empty($_COOKIE)) {
                         return;
                     }
                 }
