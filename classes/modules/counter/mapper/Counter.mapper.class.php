@@ -43,7 +43,10 @@ class PluginCounters_ModuleCounter_MapperCounter extends Mapper {
             ";
             $bResult = $this->oDb->query($sql, $sTargetType, $iTargetId, $sAction, $iTic);
         }
-        return ($bResult !== false) ? $aRow['counter'] + $iTic : false;
+        if ($bResult !== false) {
+            return !empty($aRow['counter']) ? $aRow['counter'] + $iTic : $iTic;
+        }
+        return false;
     }
 
     /**
